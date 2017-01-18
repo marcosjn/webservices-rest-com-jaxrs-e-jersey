@@ -14,10 +14,8 @@ public class Servidor {
 		ResourceConfig config = new ResourceConfig().packages("br.com.alura.resource");
 		HttpServer server = GrizzlyHttpServerFactory.createHttpServer(uri, config);
 		System.out.println("Servidor rodando");
-        System.in.read();
-        server.stop();
-
-
+		System.in.read();
+		server.stop();
 	}
 
 }
