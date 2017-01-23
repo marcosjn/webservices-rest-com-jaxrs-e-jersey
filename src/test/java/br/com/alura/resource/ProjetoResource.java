@@ -10,23 +10,26 @@ import javax.ws.rs.core.MediaType;
 import com.thoughtworks.xstream.XStream;
 
 import br.com.alura.loja.dao.CarrinhoDAO;
+import br.com.alura.loja.dao.ProjetoDAO;
 import br.com.alura.loja.modelo.Carrinho;
+import br.com.alura.loja.modelo.Projeto;
 
-@Path("carrinhos")
-public class CarrinhoResource {
+@Path("projetos")
+public class ProjetoResource {
 	@Path("{id}")
 	@GET
 	@Produces(MediaType.APPLICATION_XML)
 	public String busca(@PathParam("id") long id) {
-	    Carrinho carrinho = new CarrinhoDAO().busca(id);
-	    return carrinho.toXML();
+		Projeto projeto = new ProjetoDAO().busca(id);
+		return projeto.toXML();
 	}
 	
 	@POST
 	@Produces(MediaType.APPLICATION_XML)
 	public String adiciona(String conteudo) {
-		Carrinho carrinho = (Carrinho) new XStream().fromXML(conteudo);
-		new CarrinhoDAO().adiciona(carrinho);
+		Projeto projeto = (Projeto) new XStream().fromXML(conteudo);
+		new ProjetoDAO().adiciona(projeto);
 		return "<status>sucesso</status>";
 	}
 }
+	
